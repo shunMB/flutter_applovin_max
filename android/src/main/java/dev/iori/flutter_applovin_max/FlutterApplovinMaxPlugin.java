@@ -20,9 +20,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.plugin.common.StandardMethodCodec;
 
-
-
-public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandler, ActivityAware {
+public class FlutterApplovinMaxPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
     private static FlutterApplovinMaxPlugin instance;
     private static RewardedVideo instanceReward;
     private static Context context;
@@ -35,7 +33,8 @@ public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandl
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        this.onAttachedToEngine(flutterPluginBinding.getApplicationContext(), flutterPluginBinding.getBinaryMessenger());
+        this.onAttachedToEngine(flutterPluginBinding.getApplicationContext(),
+                flutterPluginBinding.getBinaryMessenger());
     }
 
     public static void registerWith(Registrar registrar) {
@@ -44,7 +43,6 @@ public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandl
         }
         instance.onAttachedToEngine(registrar.context(), registrar.messenger());
     }
-
 
     public void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
         if (channel != null) {
@@ -65,16 +63,20 @@ public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandl
         try {
             switch (call.method) {
                 case "Init":
-                    AppLovinSdk.getInstance(context).setMediationProvider( AppLovinMediationProvider.MAX );
+                    AppLovinSdk.getInstance(context).setMediationProvider(AppLovinMediationProvider.MAX);
                     String unitId = call.argument("UnitId").toString();
                     instanceReward.Init(unitId);
                     result.success(Boolean.TRUE);
                     break;
-                    case "ShowRewardVideo":
-                        instanceReward.Show();
+                case "ShowRewardVideo":
+                    instanceReward.Show();
                     result.success(Boolean.TRUE);
                     break;
-            default:
+                case "IsLoaded":
+                    Boolean isLoaded = instanceReward.isLoaded();
+                    result.success(isLoaded);
+                    break;
+                default:
                     result.notImplemented();
             }
         } catch (Exception err) {
@@ -106,8 +108,8 @@ public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandl
     @Override
     public void onAttachedToActivity(ActivityPluginBinding binding) {
         this.activity = binding.getActivity();
-            instance.instanceReward = new RewardedVideo();
-            Log.i("AppLovin Plugin", "Instances created");
+        instance.instanceReward = new RewardedVideo();
+        Log.i("AppLovin Plugin", "Instances created");
     }
 
     @Override
@@ -120,5 +122,6 @@ public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandl
     }
 
     @Override
-    public void onDetachedFromActivity() { }
+    public void onDetachedFromActivity() {
+    }
 }
