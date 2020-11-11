@@ -73,7 +73,7 @@ public class FlutterApplovinMaxPlugin implements FlutterPlugin, MethodCallHandle
                     result.success(Boolean.TRUE);
                     break;
                 case "IsLoaded":
-                    Boolean isLoaded = instanceReward.isLoaded();
+                    Boolean isLoaded = instanceReward.IsLoaded();
                     result.success(isLoaded);
                     break;
                 default:

@@ -12,22 +12,19 @@ import com.applovin.mediation.MaxReward;
 import com.applovin.mediation.MaxRewardedAdListener;
 import com.applovin.mediation.ads.MaxRewardedAd;
 
-
 import java.util.Map;
 
 import io.flutter.Log;
 
 public class RewardedVideo implements MaxRewardedAdListener {
     private MaxRewardedAd RewardedAd;
-    private int           retryAttempt;
+    private int retryAttempt;
 
     public void Init(String unitId) {
-        RewardedAd = MaxRewardedAd.getInstance(unitId, FlutterApplovinMaxPlugin.getInstance().activity );
-        RewardedAd.setListener( this );
+        RewardedAd = MaxRewardedAd.getInstance(unitId, FlutterApplovinMaxPlugin.getInstance().activity);
+        RewardedAd.setListener(this);
         RewardedAd.loadAd();
     }
-
-
 
     public void Show() {
         try {
@@ -38,6 +35,9 @@ public class RewardedVideo implements MaxRewardedAdListener {
         }
     }
 
+    public boolean IsLoaded() {
+        return RewardedAd.isReady();
+    }
 
     @Override
     public void onAdLoaded(MaxAd ad) {
@@ -75,11 +75,9 @@ public class RewardedVideo implements MaxRewardedAdListener {
         FlutterApplovinMaxPlugin.getInstance().Callback("AdFailedToDisplay");
     }
 
-
     @Override
     public void onRewardedVideoStarted(MaxAd ad) {
         FlutterApplovinMaxPlugin.getInstance().Callback("RewardedVideoStarted");
-
 
     }
 
@@ -93,7 +91,5 @@ public class RewardedVideo implements MaxRewardedAdListener {
     public void onUserRewarded(MaxAd ad, MaxReward reward) {
         FlutterApplovinMaxPlugin.getInstance().Callback("UserRewarded");
 
-
     }
 }
-
