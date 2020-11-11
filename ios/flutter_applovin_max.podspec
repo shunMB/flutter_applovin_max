@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_applovin_max'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
 A new Flutter plugin.
@@ -23,25 +23,18 @@ A new Flutter plugin.
   s.dependency 'AppLovinMediationByteDanceAdapter'
   s.dependency 'AppLovinMediationSmaatoAdapter'
   s.dependency 'AppLovinMediationTapjoyAdapter'
-  s.dependency 'AppLovinMediationVerizonAdsAdapter'
   s.dependency 'AppLovinMediationVungleAdapter'
-  s.dependency 'AppLovinMediationAmazonAdapter'
   s.dependency 'AppLovinMediationChartboostAdapter'
   s.dependency 'AppLovinMediationFyberAdapter'
   s.dependency 'AppLovinMediationGoogleAdapter'
   s.dependency 'AppLovinMediationGoogleAdManagerAdapter'
-  s.dependency 'AppLovinMediationHyprMXAdapter'
   s.dependency 'AppLovinMediationIronSourceAdapter'
   s.dependency 'AppLovinMediationMaioAdapter'
   s.dependency 'AppLovinMediationMyTargetAdapter'
   s.dependency 'AppLovinMediationNendAdapter'
-  s.dependency 'AppLovinMediationSnapAdapter'
   s.dependency 'AppLovinMediationTencentGDTAdapter'
   s.dependency 'AppLovinMediationUnityAdsAdapter'
   s.dependency 'AppLovinMediationYandexAdapter'
-
-  s.platform = :ios, '9.0'
-
-  # Flutter.framework does not contain a i386 slice.
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  s.static_framework = true
+  s.ios.deployment_target = '9.0'
 end
