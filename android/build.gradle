@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.applovin.mediation:smaato-adapter:+'
     implementation 'com.applovin.mediation:tapjoy-adapter:+'
     implementation 'com.applovin.mediation:chartboost-adapter:+'
+    implementation 'com.applovin.mediation:hyprmx-adapter:+'
     implementation 'com.applovin.mediation:ironsource-adapter:+'
     implementation 'com.applovin.mediation:maio-adapter:+'
     implementation 'com.applovin.mediation:nend-adapter:+'
