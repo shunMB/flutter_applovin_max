@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_applovin_max'
-  s.version          = '0.0.3'
+  s.version          = '0.1.0'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
 A new Flutter plugin.
@@ -31,7 +31,6 @@ A new Flutter plugin.
   s.dependency 'AppLovinMediationIronSourceAdapter'
   s.dependency 'AppLovinMediationMaioAdapter'
   s.dependency 'AppLovinMediationMyTargetAdapter'
-  s.dependency 'AppLovinMediationNendAdapter'
   s.dependency 'AppLovinMediationTencentGDTAdapter'
   s.dependency 'AppLovinMediationUnityAdsAdapter'
   s.dependency 'AppLovinMediationYandexAdapter'
