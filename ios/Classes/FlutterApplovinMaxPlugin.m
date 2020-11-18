@@ -42,6 +42,8 @@ FlutterMethodChannel* globalMethodChannel;
 
     } else if([@"ShowRewardVideo" isEqualToString: call.method]){
         if ( [self.rewardedAd isReady] ) {
+            [globalMethodChannel invokeMethod:@"RewardedVideoStarted" arguments: nil];
+            [NSThread sleepForTimeInterval:1];
             [self.rewardedAd showAd];
             result([NSNumber numberWithBool:YES]);
         }
