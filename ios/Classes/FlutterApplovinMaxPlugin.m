@@ -94,7 +94,6 @@ FlutterMethodChannel* globalMethodChannel;
 - (void)didRewardUserForAd:(nonnull MAAd *)ad withReward:(nonnull MAReward *)reward {
     [globalMethodChannel invokeMethod:@"UserRewarded" arguments: nil];}
 
-- (void)didStartRewardedVideoForAd:(nonnull MAAd *)ad {
-    [globalMethodChannel invokeMethod:@"RewardedVideoStarted" arguments: nil];}
+- (void)didStartRewardedVideoForAd:(nonnull MAAd *)ad {}
 
 @end
